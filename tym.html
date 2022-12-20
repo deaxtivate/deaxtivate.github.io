@@ -41,16 +41,45 @@
 
 
 <BODY>
-  <h1 class="red-text">Tớ thích cậu</h1>
+  <div id="radiate">Tớ thíc cậu</div>
   <style>
-    .red-text {
+    #radiate {
       color: palevioletred;
       text-align: center;
       position: relative;
       top: 370px;
-      
+      font-size: 48px;
+      text-shadow: 0 0 10px #ff0000;
+      transform: scale(0);
+      transition: transform 0.5s;
+    }
+
+    #radiate.animating {
+      transform: scale(1);
+      animation: radiate 1s linear infinite;
+    }
+
+    @keyframes radiate {
+      0% {
+        text-shadow: 0 0 10px #ff0000;
+      }
+
+      50% {
+        text-shadow: 0 0 20px #ff0000;
+      }
+
+      100% {
+        text-shadow: 0 0 10px #ff0000;
+      }
     }
   </style>
+  <script>
+    const element = document.getElementById('radiate');
+
+    setTimeout(function () {
+      element.classList.add('animating');
+    }, 1000); // 1000 milliseconds = 1 second
+  </script>
   <canvas id="pinkboard"></canvas>
 
   <script>
